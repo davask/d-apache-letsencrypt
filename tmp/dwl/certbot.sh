@@ -22,9 +22,9 @@ if  [ "`find /etc -type d -name "lestencrypt" | wc -l`" = "0" ] || \
     fi
 
     echo "> add certbot renewal as a cron task";
-    crontab -l > file;
-    echo '30 2 * * 1 /usr/local/bin/certbot-auto renew --quiet --no-self-upgrade >> /var/log/letsencrypt/le-renew.log' >> file
-    crontab file;
+    crontab -l > /tmp/dwl/cron;
+    echo '0 0 1 */3 * /usr/local/bin/certbot-auto renew --quiet --no-self-upgrade >> /var/log/letsencrypt/le-renew.log' >> /tmp/dwl/cron
+    crontab /tmp/dwl/cron;
 
     service apache2 reload;
 
