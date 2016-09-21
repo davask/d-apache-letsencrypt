@@ -23,6 +23,7 @@ d-apache2-letsencrypt:
   volumes:
   - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
   - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
+  - /home/dwl/projects/factory/docker-dev/letsencrypt:/etc/letsencrypt
   stdin_open: true
 
 d-apache2-openssl:
