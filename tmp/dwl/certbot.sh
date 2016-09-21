@@ -1,4 +1,7 @@
-if [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
+if  [ "`find /etc -type d -name "lestencrypt" | wc -l`" = "0" ] || \
+    [ "`find /etc/lestencrypt -type d -name "live" | wc -l`" = "0" ] || \
+    [ "`find /etc/lestencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ] || \
+    [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
     echo "> configure certbot AKA let's encrypt";
     if [ ${DWL_CERTBOT_DEBUG} ]; then
         certbot-auto \
