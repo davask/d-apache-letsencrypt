@@ -16,11 +16,10 @@ d-apache2-letsencrypt:
     DWL_SSLKEY_CN: davaskweblimited.com
     DWL_CERTBOT_EMAIL: docker@davaskweblimited.com
   labels:
-    io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
   tty: true
-  hostname: dev.davaskweblimited.com
-  image: davask/d-apache-letsencrypt:2.4-u14.04
+  hostname: letsencrypt.davaskweblimited.com
+  image: davask/d-apache2-letsencrypt:2.4-u14.04
   volumes:
   - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
   - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
@@ -63,7 +62,6 @@ d-apache2:
     DWL_USER_ID: '1000'
     DWL_USER_DNS: apache2.davaskweblimited.com
   labels:
-    io.rancher.container.start_once: 'true'
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
   tty: true
   hostname: apache2.davaskweblimited.com
