@@ -1,12 +1,22 @@
 if [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f &> /dev/null | wc -l`" = "0" ]; then
     echo "> configure certbot AKA let's encrypt";
-    certbot-auto \
-        --test-cert \
-        --non-interactive --agree-tos \
-        --email ${DWL_CERTBOT_EMAIL} \
-         --apache \
-         --webroot-path /var/www/html \
-         --domains "${DWL_USER_DNS}";
+    if [ ${DWL_CERTBOT_DEBUG} ]; then
+        certbot-auto \
+            --test-cert \
+            --no-self-upgrade \
+            --non-interactive --agree-tos \
+            --email ${DWL_CERTBOT_EMAIL} \
+             --apache \
+             --webroot-path /var/www/html \
+             --domains "${DWL_USER_DNS}";
+    else
+        certbot-auto \
+            --non-interactive --agree-tos \
+            --email ${DWL_CERTBOT_EMAIL} \
+             --apache \
+             --webroot-path /var/www/html \
+             --domains "${DWL_USER_DNS}";
+    fi
 
     echo "> add certbot renewal as a cron task";
     crontab -l > file;

@@ -4,6 +4,7 @@ LABEL dwl.server.certificat="letsencrypt"
 
 # declare letsencrypt
 ENV DWL_CERTBOT_EMAIL docker@davaskweblimited.com
+ENV DWL_CERTBOT_DEBUG false
 
 # install certbot
 RUN /bin/bash -c 'wget https://dl.eff.org/certbot-auto'
@@ -14,6 +15,5 @@ RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
 RUN /bin/bash -c 'for conf in `find /etc/apache2/sites-enabled/ -type l`; do rm ${conf}; done;'
 RUN /bin/bash -c 'for conf in `find /etc/apache2/sites-available/ -type f`; do rm ${conf}; done;'
 
-COPY ./tmp/dwl/openssl.sh /tmp/dwl/openssl.sh
 COPY ./tmp/dwl/certbot.sh /tmp/dwl/certbot.sh
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh

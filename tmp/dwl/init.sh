@@ -5,8 +5,10 @@
 echo ">> Ubuntu initialized";
 echo ">> Base initialized";
 
-. /tmp/dwl/openssl.sh
-echo ">> Openssl initialized";
+if [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f &> /dev/null | wc -l`" = "0" ]; then
+    . /tmp/dwl/openssl.sh
+    echo ">> Openssl initialized";
+fi
 
 . /tmp/dwl/apache2.sh
 echo ">> apache2 initialized";
