@@ -1,10 +1,8 @@
-DWL_USER_DWN_COUNT=`find /etc/apache2/sites-available -type f -name "*.conf" | wc -l`;
-DWL_CERTBOT_RENEW=false;
+for DWL_USER_DNS in `echo ${DWL_DNS_TOPROCESS[*]}`; do
 
-for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
-
-    DWL_USER_DNS=`echo ${conf} | awk -F '[/]' '{print $5}' | sed "s|\.conf||g"`;
     echo ${DWL_USER_DNS};
+
+    DWL_CERTBOT_RENEW=false;
 
     if  [ "`find /etc/lestencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ] || [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
 
@@ -27,6 +25,7 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
                  --webroot-path /var/www/html \
                  --domains "${DWL_USER_DNS}";
         fi
+
     else
 
         DWL_CERTBOT_RENEW=true;

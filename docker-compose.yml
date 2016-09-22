@@ -8,7 +8,6 @@ d-apache2-letsencrypt:
     DWL_USER_PASSWD: dwl
     DWL_SSH_ACCESS: 'true'
     DWL_USER_ID: '1000'
-    DWL_USER_DNS: letsencrypt.davaskweblimited.com
     DWL_SSLKEY_C: EU
     DWL_SSLKEY_ST: France
     DWL_SSLKEY_L: Vannes
@@ -37,7 +36,6 @@ d-apache2-openssl:
     DWL_USER_PASSWD: dwl
     DWL_SSH_ACCESS: 'true'
     DWL_USER_ID: '1000'
-    DWL_USER_DNS: openssl.davaskweblimited.com
     DWL_SSLKEY_C: EU
     DWL_SSLKEY_ST: France
     DWL_SSLKEY_L: Vannes
@@ -63,7 +61,6 @@ d-apache2:
     DWL_USER_PASSWD: dwl
     DWL_SSH_ACCESS: 'true'
     DWL_USER_ID: '1000'
-    DWL_USER_DNS: apache2.davaskweblimited.com
   labels:
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
   tty: true
