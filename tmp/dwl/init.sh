@@ -3,6 +3,7 @@
 . /tmp/dwl/user.sh
 . /tmp/dwl/ssh.sh
 echo ">> Ubuntu initialized";
+
 echo ">> Base initialized";
 
 if [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f &> /dev/null | wc -l`" = "0" ]; then

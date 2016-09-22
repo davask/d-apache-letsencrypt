@@ -12,5 +12,7 @@ RUN /bin/bash -c 'mv certbot-auto /usr/local/bin'
 RUN /bin/bash -c 'chmod a+x /usr/local/bin/certbot-auto'
 RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
 
+RUN /bin/bash -c 'mkdir -p /etc/lestencrypt/live'
+
 COPY ./tmp/dwl/certbot.sh /tmp/dwl/certbot.sh
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh

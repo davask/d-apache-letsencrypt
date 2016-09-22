@@ -1,16 +1,10 @@
-if  [ ! -d /etc/lestencrypt ]; then
-    mkdir -p /etc/lestencrypt;
-fi
-if  [ ! -d /etc/lestencrypt/live ]; then
-    mkdir -p /etc/lestencrypt/live;
-fi
-
 DWL_USER_DWN_COUNT=`find /etc/apache2/sites-available -type f -name "*.conf" | wc -l`;
 DWL_CERTBOT_RENEW=false;
 
 for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
-  DWL_USER_DNS=`echo ${conf} | awk -F '[/]' '{print $5}' | sed "s|\.conf||g";
+    DWL_USER_DNS=`echo ${conf} | awk -F '[/]' '{print $5}' | sed "s|\.conf||g"`;
+    echo ${DWL_USER_DNS};
 
     if  [ "`find /etc/lestencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ] || [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
 
@@ -42,7 +36,7 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
 done;
 
-if [ `crontab -l | grep certbot | wc -l` = "0" ]; then
+if [ "`crontab -l | grep 'certbot' | wc -l`" = "0" ]; then
 
     echo "> add certbot renewal as a cron task";
     crontab -l > /tmp/dwl/cron;
