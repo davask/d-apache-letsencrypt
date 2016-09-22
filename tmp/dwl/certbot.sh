@@ -1,7 +1,7 @@
-if  [ !-d /etc/lestencrypt ]; then
+if  [ ! -d /etc/lestencrypt ]; then
     mkdir -p /etc/lestencrypt;
 fi
-if  [ !-d /etc/lestencrypt/live ]; then
+if  [ ! -d /etc/lestencrypt/live ]; then
     mkdir -p /etc/lestencrypt/live;
 fi
 
