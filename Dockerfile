@@ -1,4 +1,4 @@
-FROM davask/d-apache-openssl:2.4-u14.04
+FROM davask/d-apache-openssl:2.4-u12.04
 MAINTAINER davask <docker@davaskweblimited.com>
 LABEL dwl.server.certificat="letsencrypt"
 
