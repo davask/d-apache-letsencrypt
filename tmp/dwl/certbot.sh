@@ -1,6 +1,6 @@
 for DWL_USER_DNS in `echo ${DWL_DNS_TOPROCESS[*]}`; do
 
-    echo ${DWL_USER_DNS};
+    echo "[CERTBOT-AUTO] ${DWL_USER_DNS}";
 
     DWL_CERTBOT_RENEW=false;
 
@@ -9,6 +9,8 @@ for DWL_USER_DNS in `echo ${DWL_DNS_TOPROCESS[*]}`; do
         echo "> configure certbot AKA let's encrypt";
 
         if [ ${DWL_CERTBOT_DEBUG} ]; then
+            echo "> configure DEBUG certbot";
+            echo "certbot-auto --test-cert --no-self-upgrade --non-interactive --agree-tos --email ${DWL_CERTBOT_EMAIL}  --apache  --webroot-path /var/www/html  --domains \"${DWL_USER_DNS}\"";
             certbot-auto \
                 --test-cert \
                 --no-self-upgrade \
@@ -18,6 +20,7 @@ for DWL_USER_DNS in `echo ${DWL_DNS_TOPROCESS[*]}`; do
                  --webroot-path /var/www/html \
                  --domains "${DWL_USER_DNS}";
         else
+            echo "> configure PROD certbot";
             certbot-auto \
                 --non-interactive --agree-tos \
                 --email ${DWL_CERTBOT_EMAIL} \
