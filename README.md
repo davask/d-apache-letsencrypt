@@ -27,6 +27,7 @@
 - DWL_SSLKEY_L: 'Vannes'
 - DWL_SSLKEY_O: 'davask web limited - docker container'
 - DWL_SSLKEY_CN: 'davaskweblimited.com'
+- APACHE_SSL_DIR: '/etc/apache2/ssl'
 - DWL_CERTBOT_EMAIL: 'admin@localhost'
 - DWL_CERTBOT_DEBUG: 'true'
 ## Available volumes
@@ -53,10 +54,14 @@
 
 ## virtualhost automatic conf
 
-> # ServerAdmin
-> # DocumentRoot
-> # ServerName
-> # ServerAlias
+```bash
+
+# ServerAdmin
+# DocumentRoot
+# ServerName
+# ServerAlias
+
+```
 
 
 - [test certificat](# https://www.ssllabs.com/ssltest/analyze.html?d=<sub.domain.tld>&latest
