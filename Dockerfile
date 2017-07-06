@@ -14,6 +14,11 @@ chmod a+x /usr/local/bin/certbot-auto; \
 certbot-auto --noninteractive --os-packages-only; \
 mkdir -p /etc/lestencrypt/live
 
+RUN apt-get upgrade -y && \
+apt-get autoremove -y && \
+apt-get clean && \
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 COPY ./build/dwl/certbot.sh \
 ./build/dwl/virtualhost-tsl.sh \
 ./build/dwl/init.sh \
