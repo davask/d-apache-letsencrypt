@@ -39,11 +39,11 @@
 - /etc/letsencrypt
 ## LABEL
 
-- dwl.server.os="apache-openssl 2.4-u16.04"
+- dwl.server.os="apache-openssl 2.4-d8.8"
 
-- dwl.server.base="apache-letsencrypt 2.4-u16.04"
+- dwl.server.base="apache-letsencrypt 2.4-d8.8"
 
-- dwl.server.http="apache 2.4-u16.04"
+- dwl.server.http="apache 2.4-d8.8"
 
 ## EXTRA
 
