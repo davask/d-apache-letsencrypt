@@ -1,5 +1,12 @@
 #! /bin/bash
 
+if [ ! -d "/etc/letsencrypt" ]; then
+    mkdir -p /etc/letsencrypt;
+fi
+if [ ! -d "/etc/letsencrypt/live" ]; then
+    mkdir -p /etc/letsencrypt/live;
+fi
+
 for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
     . ${dwlDir}/vhost-env.sh;
@@ -7,6 +14,13 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
     if [ "$DWL_USER_DNS_PORT" == "443" ]; then
 
         echo "> configure virtualhost-tsl for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
+
+        if [ -d "/dwl/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
+            if [ -d "/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
+                sudo rm -rdf /etc/letsencrypt/live/${DWL_USER_DNS};
+            fi
+            sudo cp -rdf /dwl/etc/letsencrypt/live/${DWL_USER_DNS} /etc/letsencrypt/live;
+        fi
 
         if [ -f "/etc/letsencrypt/live/${DWL_USER_DNS}/cert.pem" ]; then
 

@@ -61,7 +61,10 @@
         }
     ],
     "volumes": [
-        "/home/host"
+        "/home/host",
+        "/etc/apache2/sites-available",
+        "/etc/apache2/ssl",
+        "/etc/letsencrypt"
     ]
   }
 ]
