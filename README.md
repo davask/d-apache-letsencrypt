@@ -10,9 +10,10 @@
 - DWL_LOCAL_LANG: 'en_US:en'
 - DWL_LOCAL: 'en_US.UTF-8'
 - DWL_USER_NAME: 'username'
-- DWL_SSH_ACCESS: 'false'
-- DWL_USER_ID: '1000'
 - DWL_USER_PASSWD: 'secret'
+- DWL_USER_ID: '1000'
+- DWL_SUDO_USER: 'false'
+- DWL_SSH_ACCESS: 'false'
 - APACHE_LOCK_DIR: '/var/lock/apache2'
 - APACHE_PID_FILE: '/var/run/apache2.pid'
 - APACHE_RUN_USER: 'www-data'
@@ -20,7 +21,7 @@
 - APACHE_LOG_DIR: '/var/log/apache2'
 - APACHE_RUN_DIR: '/var/run/apache2'
 - DWL_HTTP_SERVERADMIN: 'admin@localhost'
-- DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+- DWL_HTTP_DOCUMENTROOT: '/var/www'
 - DWL_HTTP_SHIELD: 'false'
 - DWL_SSLKEY_C: 'EU'
 - DWL_SSLKEY_ST: 'France'
@@ -32,11 +33,7 @@
 - DWL_CERTBOT_DEBUG: 'true'
 ## Available volumes
 
-- /home/username
-- /var/log/apache2
-- /etc/apache2/sites-available
-- /etc/apache2/ssl
-- /etc/letsencrypt
+- /home/host
 ## LABEL
 
 - dwl.server.os="apache-openssl 2.4-d8.8"
