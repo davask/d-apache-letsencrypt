@@ -15,13 +15,6 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
         echo "> configure virtualhost-tsl for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
 
-        if [ -d "/dwl/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
-            if [ -d "/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
-                sudo rm -rdf /etc/letsencrypt/live/${DWL_USER_DNS};
-            fi
-            sudo cp -rdf /dwl/etc/letsencrypt/live/${DWL_USER_DNS} /etc/letsencrypt/live;
-        fi
-
         if [ -f "/etc/letsencrypt/live/${DWL_USER_DNS}/cert.pem" ]; then
 
             echo "Update TSL Certificat public key for top domain";
