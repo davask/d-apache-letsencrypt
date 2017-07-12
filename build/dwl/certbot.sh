@@ -79,7 +79,7 @@ if [ "`crontab -l | grep 'certbot' | wc -l`" = "0" ]; then
 
     echo "> add certbot renewal as a cron task";
     crontab -l | sudo tee /dwl/cron;
-    echo '0 0 1 */3 * /usr/local/bin/certbot-auto renew --quiet --no-self-upgrade >> /var/log/letsencrypt/le-renew.log' | sudo tee --append /dwl/cron;
+    echo '0 0 1 */3 * /usr/local/bin/certbot-auto renew --quiet --no-bootstrap --no-self-upgrade >> /var/log/letsencrypt/le-renew.log' | sudo tee --append /dwl/cron;
     crontab /dwl/cron;
 
 fi
@@ -87,5 +87,6 @@ fi
 if [ ${DWL_CERTBOT_RENEW} ]; then
     echo "> trigger certbot renewal";
     # test certbot-auto renew --dry-run;
-    sudo certbot-auto renew;
+    # sudo certbot-auto certonly --non-interactive --agree-tos --email ${DWL_CERTBOT_EMAIL} --apache --no-bootstrap --domains "${DWL_USER_DNS}";
+    sudo certbot-auto renew --no-bootstrap --no-self-upgrade;
 fi
