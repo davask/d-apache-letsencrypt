@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 if [ ! -d "/home/admin/.local" ]; then
   echo "create dir /home/admin/.local";
@@ -28,6 +28,10 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
             echo "> configure certbot AKA let's encrypt";
 
             if [ -d "/dwl/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
+
+                if [ ! -d "/etc/letsencrypt/live" ]; then
+                    sudo mkdir -p /etc/letsencrypt/live;
+                fi
 
                 if [ -d "/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
                     sudo rm -rdf /etc/letsencrypt/live/${DWL_USER_DNS};
@@ -85,5 +89,3 @@ if [ ${DWL_CERTBOT_RENEW} ]; then
     # test certbot-auto renew --dry-run;
     sudo certbot-auto renew;
 fi
-
-sudo service apache2 reload;

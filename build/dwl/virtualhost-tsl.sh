@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 if [ ! -d "/etc/letsencrypt" ]; then
     mkdir -p /etc/letsencrypt;
