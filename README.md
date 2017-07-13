@@ -1,6 +1,5 @@
 # dockerfile
 
-[![[dwl] apache-letsencrypt:2.4-d8.8 license][badge-travis]](https://travis-ci.org/davask/d-apache-letsencrypt)
 [![[dwl] apache-letsencrypt:2.4-d8.8 in prod][badge-shields]](https://hub.docker.com/r/davask/d-apache-letsencrypt/)
 [![[dwl] apache-letsencrypt:2.4-d8.8 license][badge-license]](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fdavask%2Fd-apache-letsencrypt?ref=badge_shield)
 
@@ -9,7 +8,6 @@
 [badge-docker]: https://dockeri.co/image/davask/d-apache-letsencrypt "[dwl] apache-letsencrypt:2.4-d8.8 image"
 [badge-shields]: https://img.shields.io/badge/davask%2Fd--apache--letsencrypt-env_prod-brightgreen.svg?style=flat "[dwl] apache-letsencrypt:2.4-d8.8 in prod"
 [badge-license]: https://img.shields.io/badge/davask%2Fd--apache--letsencrypt-license_MIT-brightgreen.svg?style=flat "[dwl] apache-letsencrypt:2.4-d8.8 license"
-[badge-travis]: https://travis-ci.org/davask/d-apache-letsencrypt.svg?branch=2.4-d8.8 "[dwl] apache-letsencrypt:2.4-d8.8 license"
 
 ## Exposed port
 
