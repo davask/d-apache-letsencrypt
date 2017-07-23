@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [ ! -d "/etc/letsencrypt" ]; then
-    mkdir -p /etc/letsencrypt;
+    sudo mkdir -p /etc/letsencrypt;
 fi
 if [ ! -d "/etc/letsencrypt/live" ]; then
-    mkdir -p /etc/letsencrypt/live;
+    sudo mkdir -p /etc/letsencrypt/live;
 fi
 
 for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
