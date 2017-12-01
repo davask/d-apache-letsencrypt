@@ -20,6 +20,7 @@ apt-get clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY ./build/dwl/certbot.sh \
+./build/dwl/renew-certbot.sh \
 ./build/dwl/virtualhost-tsl.sh \
 ./build/dwl/init.sh \
 /dwl/

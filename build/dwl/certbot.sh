@@ -23,7 +23,7 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
         DWL_CERTBOT_RENEW=false;
 
-        if  [ "`sudo find /etc/lestencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" == "0" ] || [ "`sudo find /etc/lestencrypt/live/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
+        if  [ "`sudo find /etc/letsencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" == "0" ] || [ "`sudo find /etc/letsencrypt/live/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
 
             echo "> configure certbot AKA let's encrypt";
 
@@ -37,7 +37,27 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
                     sudo rm -rdf /etc/letsencrypt/live/${DWL_USER_DNS};
                 fi
 
-                sudo cp -rdf /dwl/etc/letsencrypt/live/${DWL_USER_DNS} /etc/letsencrypt/live;
+                if [ ! -d "/etc/letsencrypt/live/${DWL_USER_DNS}" ]; then
+                    sudo mkdir -p /etc/letsencrypt/live/${DWL_USER_DNS};
+                fi
+
+                if [ ! -d "/etc/letsencrypt/archive" ]; then
+                    sudo mkdir -p /etc/letsencrypt/archive;
+                fi
+
+                if [ -d "/etc/letsencrypt/archive/${DWL_USER_DNS}" ]; then
+                    sudo rm -rdf /etc/letsencrypt/archive/${DWL_USER_DNS};
+                fi
+
+                if [ ! -d "/etc/letsencrypt/archive/${DWL_USER_DNS}" ]; then
+                    sudo mkdir -p /etc/letsencrypt/archive/${DWL_USER_DNS};
+                fi
+
+                for key in $(ls /dwl/etc/letsencrypt/live/${DWL_USER_DNS}); do
+                    echo "key: ${key}";
+                    sudo cp -rdf /dwl/etc/letsencrypt/live/${DWL_USER_DNS}/${key} /etc/letsencrypt/archive/${DWL_USER_DNS}/${key/\.pem/1.pem};
+                    sudo ln -s /etc/letsencrypt/archive/${DWL_USER_DNS}/${key/\.pem/1.pem} /etc/letsencrypt/live/${DWL_USER_DNS}/${key};
+                done;
 
                 DWL_CERTBOT_RENEW=true;
 
@@ -79,7 +99,7 @@ if [ "`crontab -l | grep 'certbot' | wc -l`" = "0" ]; then
 
     echo "> add certbot renewal as a cron task";
     crontab -l | sudo tee /dwl/cron;
-    echo '0 0 1 */3 * /usr/local/bin/certbot-auto renew --quiet --no-bootstrap --no-self-upgrade >> /var/log/letsencrypt/le-renew.log' | sudo tee --append /dwl/cron;
+    echo '0 0 1 */3 * /usr/local/bin/certbot-auto renew --quiet --no-bootstrap --no-self-upgrade --force-renewal >> /var/log/letsencrypt/le-renew.log' | sudo tee --append /dwl/cron;
     crontab /dwl/cron;
 
 fi
