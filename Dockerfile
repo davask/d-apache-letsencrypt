@@ -1,4 +1,4 @@
-FROM davask/d-apache-openssl:2.4-d8.8
+FROM davask/d-apache-openssl:2.4-u14.04
 MAINTAINER davask <docker@davaskweblimited.com>
 USER root
 LABEL dwl.server.certificat="letsencrypt"
@@ -20,6 +20,7 @@ apt-get clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY ./build/dwl/certbot.sh \
+./build/dwl/renew-certbot.sh \
 ./build/dwl/virtualhost-tsl.sh \
 ./build/dwl/init.sh \
 /dwl/
