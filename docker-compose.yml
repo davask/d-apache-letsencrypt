@@ -44,4 +44,4 @@ networks:
 # export COMPOSE_HTTP_TIMEOUT=600;
 # docker exec -ti proxy_reverse_1 sh -c 'bash /dwl/init.sh'
 # docker-compose -f /home/dwl/docker-images/http/d-apache-letsencrypt/docker-compose.yml up -d
-# docker exec -ti  sh -c 'mysqldump -u root -p  > /docker-entrypoint-initdb.d/-171217-120252.sql'
+# docker exec -ti  sh -c 'mysqldump -u root -p  > /docker-entrypoint-initdb.d/-171217-120555.sql'
