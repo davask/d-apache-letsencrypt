@@ -23,7 +23,7 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
         DWL_CERTBOT_RENEW=false;
 
-        if  [ "`sudo find /etc/lestencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" == "0" ] || [ "`sudo find /etc/lestencrypt/live/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
+        if  [ "`sudo find /etc/letsencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" == "0" ] || [ "`sudo find /etc/letsencrypt/live/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
 
             echo "> configure certbot AKA let's encrypt";
 
