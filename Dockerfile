@@ -15,6 +15,7 @@ certbot-auto --noninteractive --os-packages-only; \
 mkdir -p /etc/lestencrypt/live
 
 COPY ./build/dwl/certbot.sh \
+./build/dwl/renew-certbot.sh \
 ./build/dwl/virtualhost-tsl.sh \
 ./build/dwl/init.sh \
 /dwl/
