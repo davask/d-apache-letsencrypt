@@ -3,7 +3,7 @@
     "title": "Apache 2.4 + TSL",
     "description": "Apache 2.4 + letsencrypt",
     "logo": "https://avatars2.githubusercontent.com/u/17889013?v=3&s=200",
-    "image": "davask/d-apache-letsencrypt:2.4-d8.8",
+    "image": "davask/d-apache-letsencrypt:2.4-d9.0",
     "ports": [
         "22/tcp",
         "80/tcp",
@@ -51,7 +51,7 @@
             "label": "Organization Name (eg, company) [davask web limited - docker container]"
         }{
             "name": "DWL_SSLKEY_CN",
-            "label": "Common Name (e.g. server FQDN or YOUR name) [davaskweblimited.com]"
+            "label": "Common Name (e.g. server FQDN or YOUR name) [davask.com]"
         }{
             "name": "DWL_CERTBOT_EMAIL",
             "label": "Certbot email contact [admin@localhost]"

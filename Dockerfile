@@ -1,10 +1,10 @@
-FROM davask/d-apache-openssl:2.4-d8.8
-MAINTAINER davask <docker@davaskweblimited.com>
+FROM davask/d-apache-openssl:2.4-d9.0
+MAINTAINER davask <admin@davask.com>
 USER root
 LABEL dwl.server.certificat="letsencrypt"
 
 # declare letsencrypt
-ENV DWL_CERTBOT_EMAIL docker@davaskweblimited.com
+ENV DWL_CERTBOT_EMAIL admin@davask.com
 ENV DWL_CERTBOT_DEBUG false
 
 # install certbot
